@@ -1,5 +1,5 @@
 package = "colormap"
-version = "1.1-1"
+version = "1.1-2"
 source = {
    url = "git://github.com/JannerM/torch-colormap",
    tag = "master"
@@ -11,7 +11,8 @@ description = {
 
 dependencies = {
    "torch >= 7.0",
-   "luafilesystem"
+   "luafilesystem",
+   "image"
 }
 
 build = {
