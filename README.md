@@ -1,22 +1,31 @@
 # Torch Colormap
 
 Colormaps for visualizing greyscale images in Torch. All styles in MATLAB (parula, jet, hsv, autumn, and everything else [here](http://www.mathworks.com/help/matlab/ref/colormap.html)) are supported. 
-<!-- ![David](examples/david.jpg =256x332) -->
+
+## Installation
+
+`$ luarocks install colormap`
+
+Requires [Torch7](http://torch.ch/), [luafilesystem](https://github.com/keplerproject/luafilesystem), and [image](https://github.com/torch/image).
 
 ## Usage
 1. 	Choose the style and number of unique colors in the map with something like:
 
-	`colormap:setStyle('parula')` and `colormap:setSteps(512)`
+	`> require 'colormap'`
+
+	`> colormap:setStyle('parula')` 
+
+	`> colormap:setSteps(512)`
 
 2. Pass in a single-channel image
 
-	`img = image.load('examples/david.jpg')`
+	`> img = image.load('david.jpg')`
 
-	`rgbImg = colormap:convert(img)`
+	`> rgbImg = colormap:convert(img)`
 
 3. If you want a colorbar to go along with it:
 
-	`bar = colormap:colorbar(height, width)`
+	`> bar = colormap:colorbar(height, width)`
 
 <p align="center">
 <img src="lua/david.jpg" height=256> 
@@ -27,7 +36,7 @@ Colormaps for visualizing greyscale images in Torch. All styles in MATLAB (parul
 <em> Greyscale and colored David </em>
 </p>
 
-Running `colormap:samples()` will generate images of a butterfly visualized with a few different styles and step numbers:
+Running `> colormap:samples()` will generate images of a butterfly visualized with a few different styles and step numbers:
 <p align="center">
 <img src="examples/butterflyRGB.jpg" width=1000> 
 </p>
