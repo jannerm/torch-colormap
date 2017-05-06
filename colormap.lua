@@ -78,7 +78,7 @@ end
 -- style and step number;
 -- img should have 2 
 -- non-singleton dimensions  
-function colormap:convert(img)
+function colormap:convert(img, max_disp)
 	local img = img:squeeze()
 	local m, n
 	m, n = img:size()[1], img:size()[2]
@@ -88,8 +88,10 @@ function colormap:convert(img)
 	if torch.all(img:eq(img[1][1])) then
 		indices = torch.Tensor(m,n):fill(math.floor(self.steps / 2))
 	else
+        local max_disp = max_disp or torch.max(img)
+        img:clamp(0,max_disp)
 		img = img - torch.min(img)
-		img = img / torch.max(img) * (self.steps-1) + 1
+		img = img / max_disp * (self.steps-1) + 1
 		indices = torch.ceil(img)
 	end
 	indices = indices:reshape(indices:numel())
